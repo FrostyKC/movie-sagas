@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import GenreListItem from '../../components/GenreListItem/GenreListItem';
 
 class AddMovie extends Component {
+  componentDidMount() {
+    // use component did mount to dispatch an action to request the genreList from the API
+    this.props.dispatch({
+      type: 'GET_GENRES',
+    });
+  }
+
   state = {
     newMovie: {
       title: '',
@@ -57,8 +65,14 @@ class AddMovie extends Component {
             placeholder="description"
             onChange={this.handleInputChange('description')}
           ></input>
-          <select name="Genres" placeholder="Genre">
-            <option value="">Pick a Genre</option>
+          <select
+            name="Genres"
+            placeholder="Genre"
+            onChange={this.handleInputChange('genre_id')}
+          >
+            {this.props.reduxState.genres.map((genreItem, index) => {
+              return <GenreListItem key={index} genreItem={genreItem} />;
+            })}
           </select>
         </div>
         <div>
@@ -69,5 +83,8 @@ class AddMovie extends Component {
     );
   }
 }
+const mapStateToProps = (reduxState) => ({
+  reduxState,
+});
 
-export default connect()(AddMovie);
+export default connect(mapStateToProps)(AddMovie);

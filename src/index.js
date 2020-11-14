@@ -17,6 +17,7 @@ function* rootSaga() {
   yield takeLatest('GET_MOVIES', getMovies);
   yield takeLatest('GET_DETAILS', getMovieDetails);
   yield takeLatest('POST_MOVIE', postMovie);
+  yield takeLatest('GET_GENRES', getGenres);
 }
 
 // Create sagaMiddleware
@@ -36,6 +37,24 @@ function* getMovies(action) {
     yield put({
       type: 'ERROR_MSG',
       payload: 'There was a problem loading movies. Please try again.',
+    });
+  }
+}
+
+function* getGenres(action) {
+  try {
+    yield put({ type: 'ERROR_RESET' });
+    const response = yield axios.get('/api/genre');
+    console.log(response.data);
+    yield put({
+      type: 'SET_GENRES',
+      payload: response.data,
+    });
+  } catch (err) {
+    console.log(err);
+    yield put({
+      type: 'ERROR_MSG',
+      payload: 'There was a problem loading genres. Please try again.',
     });
   }
 }

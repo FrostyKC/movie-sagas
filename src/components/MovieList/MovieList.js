@@ -4,7 +4,7 @@ import MovieListItem from '../MovieListItem/MovieListItem';
 
 class MovieList extends Component {
   componentDidMount() {
-    // use component did mount to dispatch an action to request the plantList from the API
+    // use component did mount to dispatch an action to request the movieList from the API
     this.props.dispatch({
       type: 'GET_MOVIES',
     });
