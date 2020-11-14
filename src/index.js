@@ -15,6 +15,7 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeLatest('GET_MOVIES', getMovies);
+  yield takeLatest('GET_DETAILS', getMovieDetails);
 }
 
 // Create sagaMiddleware
@@ -25,7 +26,6 @@ function* getMovies(action) {
     yield put({ type: 'ERROR_RESET' });
     const response = yield axios.get('/api/movie');
     console.log(response.data);
-    // version of a dispatch = put
     yield put({
       type: 'SET_MOVIES',
       payload: response.data,
@@ -39,10 +39,37 @@ function* getMovies(action) {
   }
 }
 
+function* getMovieDetails(action) {
+  try {
+    yield put({ type: 'ERROR_RESET' });
+    const response = yield axios.get(`/api/movie/details/${action.payload}`);
+    console.log(response.data);
+    yield put({
+      type: 'SET_DETAILS',
+      payload: response.data,
+    });
+  } catch (err) {
+    console.log(err);
+    yield put({
+      type: 'ERROR_MSG',
+      payload: 'There was a problem loading movie details. Please try again.',
+    });
+  }
+}
+
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'SET_MOVIES':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+// Used to store the movie details from server
+const movieDetails = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_DETAILS':
       return action.payload;
     default:
       return state;
@@ -73,6 +100,7 @@ const errorMessage = (state = null, action) => {
 const storeInstance = createStore(
   combineReducers({
     movies,
+    movieDetails,
     genres,
     errorMessage,
   }),
