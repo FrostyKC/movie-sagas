@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
-  const queryText = 'SELECT * FROM movies';
+  const queryText = 'SELECT * FROM movies;';
   pool
     .query(queryText)
     .then((result) => {
@@ -11,6 +11,22 @@ router.get('/', (req, res) => {
     })
     .catch((err) => {
       console.log('Error completing SELECT movie', err);
+      res.sendStatus(500);
+    });
+});
+
+router.get('/details/:id', (req, res) => {
+  const queryText = `SELECT movies.id, movies.title, movies.poster, movies.description, genres.name FROM movies
+  JOIN movie_genres ON movies.id = movie_genres.movie_id
+  JOIN genres ON movie_genres.genre_id = genres.id
+  WHERE movies.id = $1;`;
+  pool
+    .query(queryText, [req.params.id])
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('Error completing SELECT movie details query', err);
       res.sendStatus(500);
     });
 });
