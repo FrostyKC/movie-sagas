@@ -9,11 +9,17 @@ class MovieList extends Component {
       type: 'GET_MOVIES',
     });
   }
+  clickAddMovie = (event) => {
+    this.props.history.push('/addmovie');
+  };
 
   render() {
     console.log(this.props.reduxState.movies);
     return (
       <div>
+        <div>
+          <button onClick={this.clickAddMovie}>Add a Movie</button>
+        </div>
         {this.props.reduxState.movies.map((movieItem, index) => {
           return <MovieListItem key={index} movieItem={movieItem} />;
         })}
