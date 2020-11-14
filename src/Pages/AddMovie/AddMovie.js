@@ -2,6 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class AddMovie extends Component {
+  state = {
+    newMovie: {
+      title: '',
+      poster: '',
+      description: '',
+      genre_id: '',
+    },
+  };
+
+  handleInputChange = (input) => (event) => {
+    this.setState({
+      newMovie: {
+        ...this.state.newMovie,
+        [input]: event.target.value,
+      },
+    });
+  };
+
   clickCancel = (event) => {
     this.props.history.push('/');
   };
@@ -10,9 +28,22 @@ class AddMovie extends Component {
     return (
       <div>
         <div>
-          <input type="text" placeholder="title"></input>
-          <input type="text" placeholder="img url"></input>
-          <input type="text" placeholder="description"></input>
+          <pre>{JSON.stringify(this.state)}</pre>
+          <input
+            type="text"
+            placeholder="title"
+            onChange={this.handleInputChange('title')}
+          ></input>
+          <input
+            type="text"
+            placeholder="img url"
+            onChange={this.handleInputChange('poster')}
+          ></input>
+          <input
+            type="text"
+            placeholder="description"
+            onChange={this.handleInputChange('description')}
+          ></input>
           <select name="Genres" placeholder="Genre">
             <option value="">Pick a Genre</option>
           </select>
