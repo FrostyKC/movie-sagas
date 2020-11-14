@@ -16,6 +16,7 @@ import axios from 'axios';
 function* rootSaga() {
   yield takeLatest('GET_MOVIES', getMovies);
   yield takeLatest('GET_DETAILS', getMovieDetails);
+  yield takeLatest('POST_MOVIE', postMovie);
 }
 
 // Create sagaMiddleware
@@ -53,6 +54,22 @@ function* getMovieDetails(action) {
     yield put({
       type: 'ERROR_MSG',
       payload: 'There was a problem loading movie details. Please try again.',
+    });
+  }
+}
+
+function* postMovie(action) {
+  try {
+    yield put({ type: 'ERROR_RESET' });
+    yield axios.post('/api/movie', action.payload);
+    yield put({
+      type: 'GET_MOVIES',
+    });
+  } catch (err) {
+    console.log(err);
+    yield put({
+      type: 'ERROR_MSG',
+      payload: "Sorry we couldn't save your movie. Please try again.",
     });
   }
 }

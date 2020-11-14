@@ -20,6 +20,19 @@ class AddMovie extends Component {
     });
   };
 
+  clickSaveMovie = (event) => {
+    this.props.dispatch({ type: 'POST_MOVIE', payload: this.state.newMovie });
+    this.setState({
+      newMovie: {
+        title: '',
+        poster: '',
+        description: '',
+        genre_id: '',
+      },
+    });
+    this.props.history.push('/');
+  };
+
   clickCancel = (event) => {
     this.props.history.push('/');
   };
@@ -50,7 +63,7 @@ class AddMovie extends Component {
         </div>
         <div>
           <button onClick={this.clickCancel}>Cancel</button>
-          <button>Save</button>
+          <button onClick={this.clickSaveMovie}>Save</button>
         </div>
       </div>
     );
