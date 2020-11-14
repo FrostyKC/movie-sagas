@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
       res.send(result.rows);
     })
     .catch((err) => {
-      console.log('Error completing SELECT movie', err);
+      console.log('Error completing SELECT movies', err);
       res.sendStatus(500);
     });
 });
