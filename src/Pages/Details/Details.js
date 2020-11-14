@@ -13,6 +13,7 @@ class Details extends Component {
   clickBackToCollection = (event) => {
     this.props.history.push('/');
   };
+
   render() {
     const detailList = this.props.reduxState.movieDetails.map((item, index) => {
       return (
