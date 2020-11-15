@@ -70,6 +70,7 @@ class AddMovie extends Component {
             placeholder="Genre"
             onChange={this.handleInputChange('genre_id')}
           >
+            <option>Select Genre</option>
             {this.props.reduxState.genres.map((genreItem, index) => {
               return <GenreListItem key={index} genreItem={genreItem} />;
             })}
