@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieListItem from '../MovieListItem/MovieListItem';
@@ -18,7 +19,9 @@ class MovieList extends Component {
     return (
       <div>
         <div>
-          <button onClick={this.clickAddMovie}>Add a Movie</button>
+          <Button variant="contained" onClick={this.clickAddMovie}>
+            Add a Movie
+          </Button>
         </div>
         {this.props.reduxState.movies.map((movieItem, index) => {
           return <MovieListItem key={index} movieItem={movieItem} />;

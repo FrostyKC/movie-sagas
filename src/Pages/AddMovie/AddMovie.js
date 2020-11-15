@@ -1,3 +1,10 @@
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  TextField,
+} from '@material-ui/core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GenreListItem from '../../components/GenreListItem/GenreListItem';
@@ -50,35 +57,54 @@ class AddMovie extends Component {
       <div>
         <div>
           <pre>{JSON.stringify(this.state)}</pre>
-          <input
-            type="text"
-            placeholder="title"
+          <TextField
+            id="outlined-basic"
+            label="Title"
+            multiline
+            rows={6}
+            variant="outlined"
             onChange={this.handleInputChange('title')}
-          ></input>
-          <input
-            type="text"
-            placeholder="img url"
+          />
+          <TextField
+            id="outlined-basic"
+            label="Img URL"
+            multiline
+            rows={6}
+            variant="outlined"
             onChange={this.handleInputChange('poster')}
-          ></input>
-          <input
-            type="text"
-            placeholder="description"
+          />
+          <TextField
+            id="outlined-multiline-static"
+            label="Description"
+            multiline
+            rows={6}
+            variant="outlined"
             onChange={this.handleInputChange('description')}
-          ></input>
-          <select
-            name="Genres"
-            placeholder="Genre"
-            onChange={this.handleInputChange('genre_id')}
-          >
-            <option>Select Genre</option>
-            {this.props.reduxState.genres.map((genreItem, index) => {
-              return <GenreListItem key={index} genreItem={genreItem} />;
-            })}
-          </select>
+          />
+
+          <FormControl variant="filled">
+            <InputLabel htmlFor="filled-age-native-simple">Genre</InputLabel>
+            <Select
+              native
+              multiline
+              rows={6}
+              onChange={this.handleInputChange('genre_id')}
+              label="Genre"
+            >
+              <option aria-label="None" value="" />
+              {this.props.reduxState.genres.map((genreItem, index) => {
+                return <GenreListItem key={index} genreItem={genreItem} />;
+              })}
+            </Select>
+          </FormControl>
         </div>
         <div>
-          <button onClick={this.clickCancel}>Cancel</button>
-          <button onClick={this.clickSaveMovie}>Save</button>
+          <Button variant="contained" onClick={this.clickCancel}>
+            Cancel
+          </Button>
+          <Button variant="contained" onClick={this.clickSaveMovie}>
+            Save
+          </Button>
         </div>
       </div>
     );
