@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class Details extends Component {
   componentDidMount() {
-    // use component did mount to dispatch an action to request the plantList from the API
+    // use component did mount to dispatch an action to request the details from the API
     this.props.dispatch({
       type: 'GET_DETAILS',
       payload: this.props.match.params.id,
