@@ -1,0 +1,16 @@
+.root {
+  width: 300px;
+  margin: 10px;
+}
+
+.media {
+  height: 383px;
+  width: 259px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.movieItem {
+  display: inline-table;
+}
