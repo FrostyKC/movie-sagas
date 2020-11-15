@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 class DetailListItem extends Component {
   render() {
+    // rendering the movie details of each item.
     return (
       <div key={this.props.index}>
         <h1>{this.props.item.title}</h1>

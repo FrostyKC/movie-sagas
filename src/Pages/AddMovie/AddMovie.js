@@ -26,6 +26,7 @@ class AddMovie extends Component {
     },
   };
 
+  // tracking change in the input fields
   handleInputChange = (input) => (event) => {
     this.setState({
       newMovie: {
@@ -35,6 +36,7 @@ class AddMovie extends Component {
     });
   };
 
+  // dispatches a post carrying newMovie data, redirects user to home page.
   clickSaveMovie = (event) => {
     this.props.dispatch({ type: 'POST_MOVIE', payload: this.state.newMovie });
     this.setState({
@@ -48,11 +50,13 @@ class AddMovie extends Component {
     this.props.history.push('/');
   };
 
+  // redirects user to homepage
   clickCancel = (event) => {
     this.props.history.push('/');
   };
 
   render() {
+    //rendering input fields to dom for title img url description and a dropdown for genres, tracks change, and 2 buttons, cancel and save.
     return (
       <div>
         <div>
@@ -62,7 +66,7 @@ class AddMovie extends Component {
             id="outlined-basic"
             label="Title"
             multiline
-            rows={6}
+            rows={2}
             variant="outlined"
             onChange={this.handleInputChange('title')}
           />
@@ -70,7 +74,7 @@ class AddMovie extends Component {
             id="outlined-basic"
             label="Img URL"
             multiline
-            rows={6}
+            rows={2}
             variant="outlined"
             onChange={this.handleInputChange('poster')}
           />
@@ -78,7 +82,7 @@ class AddMovie extends Component {
             id="outlined-multiline-static"
             label="Description"
             multiline
-            rows={6}
+            rows={2}
             variant="outlined"
             onChange={this.handleInputChange('description')}
           />
@@ -88,7 +92,7 @@ class AddMovie extends Component {
             <Select
               native
               multiline
-              rows={6}
+              rows={2}
               onChange={this.handleInputChange('genre_id')}
               label="Genre"
             >

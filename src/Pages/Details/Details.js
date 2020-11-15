@@ -5,19 +5,20 @@ import DetailList from '../../components/DetailList/DetailList';
 
 class Details extends Component {
   componentDidMount() {
-    // use component did mount to dispatch an action to request the details from the API
+    // use component did mount to dispatch an action to request the movie details from the API
     this.props.dispatch({
       type: 'GET_DETAILS',
       payload: this.props.match.params.id,
     });
   }
-
+  // redirects user to homepage
   clickBackToCollection = (event) => {
     this.props.history.push('/');
   };
 
   render() {
     return (
+      // rending the movie details
       <div>
         <h1>Movie Details!</h1>
         <Button variant="contained" onClick={this.clickBackToCollection}>

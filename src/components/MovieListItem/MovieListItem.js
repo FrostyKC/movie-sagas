@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 class MovieListItem extends Component {
+  // takes user to details page of a movie based on id
   movieClick = (event) => {
     this.props.history.push(`/details/${this.props.movieItem.id}`);
   };
 
   render() {
     return (
+      // rendering movie to dom
       <div className="movieItem">
         <h1>{this.props.movieItem.title}</h1>
         <img

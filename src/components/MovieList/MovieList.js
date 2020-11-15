@@ -12,8 +12,8 @@ class MovieList extends Component {
   }
 
   render() {
-    console.log(this.props.reduxState.movies);
     return (
+      // mapping through movies reducer to sort each movie individually
       <div>
         {this.props.reduxState.movies.map((movieItem, index) => {
           return <MovieListItem key={index} movieItem={movieItem} />;

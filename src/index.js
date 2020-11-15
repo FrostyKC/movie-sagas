@@ -23,6 +23,7 @@ function* rootSaga() {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
+// used to dispatch errors, ajax call to get movies, set the movie reducer with results from ajax call
 function* getMovies(action) {
   try {
     yield put({ type: 'ERROR_RESET' });
@@ -41,6 +42,7 @@ function* getMovies(action) {
   }
 }
 
+// used to dispatch errors, ajax call to get genres, set the genre reducer with results from ajax call
 function* getGenres(action) {
   try {
     yield put({ type: 'ERROR_RESET' });
@@ -59,6 +61,7 @@ function* getGenres(action) {
   }
 }
 
+// used to dispatch errors, ajax call to get movie details, set the movieDetails reducer with results from ajax call
 function* getMovieDetails(action) {
   try {
     yield put({ type: 'ERROR_RESET' });
@@ -77,6 +80,7 @@ function* getMovieDetails(action) {
   }
 }
 
+// used to dispatch errors, ajax call to post movies, gets new results
 function* postMovie(action) {
   try {
     yield put({ type: 'ERROR_RESET' });
@@ -122,6 +126,7 @@ const genres = (state = [], action) => {
   }
 };
 
+// Used to store the error messages
 const errorMessage = (state = null, action) => {
   if (action.type === 'ERROR_MSG') {
     return action.payload;
