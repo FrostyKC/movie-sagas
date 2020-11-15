@@ -56,7 +56,8 @@ class AddMovie extends Component {
     return (
       <div>
         <div>
-          <pre>{JSON.stringify(this.state)}</pre>
+          <h1>Add a movie to the Collection</h1>
+          {/* <pre>{JSON.stringify(this.state)}</pre> */}
           <TextField
             id="outlined-basic"
             label="Title"

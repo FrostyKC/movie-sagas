@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DetailList from '../../components/DetailList/DetailList';
@@ -19,7 +20,10 @@ class Details extends Component {
     return (
       <div>
         <h1>Movie Details!</h1>
-        <button onClick={this.clickBackToCollection}>Back to Collection</button>
+        <Button variant="contained" onClick={this.clickBackToCollection}>
+          Back to Collection
+        </Button>
+        {/* <button onClick={this.clickBackToCollection}>Back to Collection</button> */}
         <DetailList />
       </div>
     );
