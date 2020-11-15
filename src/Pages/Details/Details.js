@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import DetailList from '../../components/DetailList/DetailList';
 
 class Details extends Component {
   componentDidMount() {
@@ -15,21 +16,11 @@ class Details extends Component {
   };
 
   render() {
-    const detailList = this.props.reduxState.movieDetails.map((item, index) => {
-      return (
-        <div key={index}>
-          <h1>{item.title}</h1>
-          <img src={item.poster} alt={item.title} />
-          <p>{item.description}</p>
-          <h3>Genres:</h3>
-          <p>{item.genres}</p>
-        </div>
-      );
-    });
     return (
       <div>
+        <h1>Movie Details!</h1>
         <button onClick={this.clickBackToCollection}>Back to Collection</button>
-        {detailList}
+        <DetailList />
       </div>
     );
   }
