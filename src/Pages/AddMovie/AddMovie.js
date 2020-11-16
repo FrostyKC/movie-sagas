@@ -8,6 +8,8 @@ import {
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GenreListItem from '../../components/GenreListItem/GenreListItem';
+import Box from '@material-ui/core/Box';
+import './AddMovie.css';
 
 class AddMovie extends Component {
   componentDidMount() {
@@ -62,54 +64,65 @@ class AddMovie extends Component {
         <div>
           <h1>Add a movie to the Collection</h1>
           {/* <pre>{JSON.stringify(this.state)}</pre> */}
-          <TextField
-            id="outlined-basic"
-            label="Title"
-            multiline
-            rows={2}
-            variant="outlined"
-            onChange={this.handleInputChange('title')}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Img URL"
-            multiline
-            rows={2}
-            variant="outlined"
-            onChange={this.handleInputChange('poster')}
-          />
-          <TextField
-            id="outlined-multiline-static"
-            label="Description"
-            multiline
-            rows={2}
-            variant="outlined"
-            onChange={this.handleInputChange('description')}
-          />
-
-          <FormControl variant="filled">
-            <InputLabel htmlFor="filled-age-native-simple">Genre</InputLabel>
-            <Select
-              native
+          <Box m={1} display="inline">
+            <TextField
+              id="outlined-basic"
+              label="Title"
               multiline
               rows={2}
-              onChange={this.handleInputChange('genre_id')}
-              label="Genre"
-            >
-              <option aria-label="None" value="" />
-              {this.props.reduxState.genres.map((genreItem, index) => {
-                return <GenreListItem key={index} genreItem={genreItem} />;
-              })}
-            </Select>
-          </FormControl>
+              variant="outlined"
+              onChange={this.handleInputChange('title')}
+            />
+          </Box>
+          <Box m={1} display="inline">
+            <TextField
+              id="outlined-basic"
+              label="Img URL"
+              multiline
+              rows={2}
+              variant="outlined"
+              onChange={this.handleInputChange('poster')}
+            />
+          </Box>
+          <Box m={1} display="inline">
+            <TextField
+              id="outlined-multiline-static"
+              label="Description"
+              multiline
+              rows={2}
+              variant="outlined"
+              onChange={this.handleInputChange('description')}
+            />
+          </Box>
+          <Box m={1} display="inline">
+            <FormControl variant="filled">
+              <InputLabel htmlFor="filled-age-native-simple">Genre</InputLabel>
+              <Select
+                native
+                multiline
+                rows={2}
+                onChange={this.handleInputChange('genre_id')}
+                label="Genre"
+              >
+                <option aria-label="None" value="" />
+                {this.props.reduxState.genres.map((genreItem, index) => {
+                  return <GenreListItem key={index} genreItem={genreItem} />;
+                })}
+              </Select>
+            </FormControl>
+          </Box>
         </div>
-        <div>
-          <Button variant="contained" onClick={this.clickCancel}>
-            Cancel
-          </Button>
-          <Button variant="contained" onClick={this.clickSaveMovie}>
-            Save
-          </Button>
+        <div className="addMovieBtn">
+          <Box m={1} display="inline">
+            <Button variant="contained" onClick={this.clickCancel}>
+              Cancel
+            </Button>
+          </Box>
+          <Box m={1} display="inline">
+            <Button variant="contained" onClick={this.clickSaveMovie}>
+              Save
+            </Button>
+          </Box>
         </div>
       </div>
     );

@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import './MovieListItem.css';
-import { CardActionArea } from '@material-ui/core';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 class MovieListItem extends Component {
   // takes user to details page of a movie based on id
