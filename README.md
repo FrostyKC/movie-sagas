@@ -1,6 +1,8 @@
-# Project Name
+# Movie Collection
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+## Screen Shot
+
+<img width="1415" alt="Screen Shot 2020-11-15 at 6 49 22 PM" src="https://user-images.githubusercontent.com/67863663/99202129-c5e87400-2773-11eb-9ccf-2f26997b72d4.png">
 
 ## Description
 
