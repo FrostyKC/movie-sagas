@@ -13,6 +13,21 @@ Add a movie
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+The movie collection will hold movies like a library. The homepage will show all the movies that has been added. The user can add a new movie by clicking the "Add a Movie" button on the homepage. This will then redirect the user to the add movie page. Here the user can enter in the title, img url, description and select a genre for the movie they would like to add. From here there are two options, clicking save and clicking cancel. Clicking save will save the movie to the database and bring the user back to the homepage that now displays movie just added. Clicking cancel will not add the movie and redirects user back to the homepage. On the homepage the user can click on the img of any movie to see details about that movie. The details page shows the title, img, description, and genre. The user can click back to collection and will redirect user to the homepage.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+## Built With
+
+- Material-UI
+- Axios
+- Node
+- PostgreSQL
+- React
+- Redux
+- Saga
+- Javascript
+- CSS
+- HTML
+
+## Acknowledgement
+
+Thanks to Prime Digital Academy who equipped and helped me make this application a reality.
