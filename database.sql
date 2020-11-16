@@ -78,3 +78,9 @@ VALUES
 (13, 7), (13, 10), (13, 5),
 (14, 2), (14, 1), (14, 4);
 
+SELECT * FROM movies ORDER BY title;
+
+SELECT movies.id, movies.title, movies.poster, movies.description, string_AGG(DISTINCT genres.name, ',') as genres FROM "movies"
+JOIN "movie_genres" ON movies.id = movie_genres.movie_id
+JOIN "genres" ON movie_genres.genre_id = genres.id
+WHERE movies.id = 15 GROUP BY movies.id;
